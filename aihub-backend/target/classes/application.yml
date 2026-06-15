@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: aihub-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/aihub
+    username: postgres
+    password: Ak@vishnu26
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
+  sql:
+    init:
+      mode: always
+
+server:
+  port: 8084
+
+# JWT Configuration
+jwt:
+  secret: 404E635266556A586E3272357538782F413F4428472B4B6250655368566D5970
+  # 1 hour in ms
+  expiration: 3600000
+  # 7 days in ms
+  refresh-expiration: 604800000
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method

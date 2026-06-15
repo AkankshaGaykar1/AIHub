@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Base Styles ===== */
+@layer base {
+  :root {
+    --bg-main: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --text-main: #0F172A;
+    --text-muted: #475569;
+    --border-color: #E2E8F0;
+    --glass-bg: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(0, 0, 0, 0.05);
+    --glass-hover: rgba(255, 255, 255, 1);
+    --glass-border-hover: rgba(0, 0, 0, 0.1);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0F172A;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #6C63FF, #00D4FF);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #6C63FF, #10B981);
+  }
+}
+
+/* ===== Component Utilities ===== */
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1rem;
+    transition: all 0.5s ease;
+  }
+
+  .glass-card-hover {
+    @apply glass-card;
+  }
+
+  .glass-card-hover:hover {
+    background-color: var(--glass-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 0 40px rgba(108, 99, 255, 0.15), 0 0 80px rgba(0, 212, 255, 0.08);
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #6C63FF, #00D4FF, #10B981);
+    background-size: 300% 300%;
+    animation: gradient 8s ease infinite;
+  }
+
+  .gradient-text-purple {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #6C63FF, #00D4FF);
+  }
+
+  /* Gradient Buttons */
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300;
+    background: linear-gradient(135deg, #6C63FF, #00D4FF);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #00D4FF, #6C63FF);
+    box-shadow: 0 0 30px rgba(108, 99, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-xl font-semibold text-slate-900 transition-all duration-300;
+    @apply border border-slate-200 bg-slate-100 backdrop-blur-sm;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-slate-200 border-slate-300;
+    transform: translateY(-2px);
+  }
+
+  /* Glow Effect */
+  .glow-purple {
+    box-shadow: 0 0 60px rgba(108, 99, 255, 0.3);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 60px rgba(0, 212, 255, 0.3);
+  }
+
+  /* Section Styling */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-slate-500 text-center text-lg max-w-2xl mx-auto mb-16;
+  }
+}
+
+/* ===== Animations ===== */
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes blob-move {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -50px) scale(1.1); }
+  50% { transform: translate(-20px, 20px) scale(0.9); }
+  75% { transform: translate(20px, 50px) scale(1.05); }
+}
+
+/* Animated Background Orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: blob-move 20s ease-in-out infinite;
+}
+
+.orb-purple {
+  background: radial-gradient(circle, #6C63FF, transparent);
+}
+
+.orb-cyan {
+  background: radial-gradient(circle, #00D4FF, transparent);
+}
+
+.orb-green {
+  background: radial-gradient(circle, #10B981, transparent);
+}
+
+/* Stars / Dots Background */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(108, 99, 255, 0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
